@@ -1,0 +1,24 @@
+		*{
+ margin : 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+
+body {
+    margin: 20px;
+}
+
+.arena-gallery {
+  margin-left: 20px;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+
+img {
+  width: 100px;
+  height: auto;
+  display: block;
+}

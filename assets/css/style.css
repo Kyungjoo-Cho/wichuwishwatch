@@ -1,0 +1,506 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-image: url("../images/site-bg-desktop.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.site-wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 16px 32px;
+}
+
+.site-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 8px;
+  padding-bottom: 16px;
+}
+
+.site-logo {
+  width: min(92vw, 760px);
+  height: auto;
+  display: block;
+}
+
+.game-page {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.device-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.device {
+  position: relative;
+  width: min(84vw, 600px);
+  aspect-ratio: 1723 / 2048;
+}
+
+.device-shell {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 스크린 영역 */
+.screen-area {
+  position: absolute;
+
+  left: 25.6%;
+  top: 29.1%;
+
+  width: 48.8%;
+  height: 36.5%;
+
+  overflow: hidden;
+  border-radius: 5%;
+}
+
+.screen-placeholder {
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/site-bg-desktop.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+}
+
+.screen-label {
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  color: #7f6380;
+  margin-bottom: 8px;
+}
+
+.screen-sub {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #7f6380;
+}
+
+/* 버튼 클릭 영역 */
+.device-button {
+  position: absolute;
+  width: 12%;
+  aspect-ratio: 1 / 1;
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.device-button:focus-visible {
+  outline: 3px dashed rgba(255, 255, 255, 0.9);
+  outline-offset: 4px;
+}
+
+/* 버튼 위치 */
+.button-a {
+  left: 29.35%;
+  top: 76.96%;
+  transform: translate(-50%, -50%);
+}
+
+.button-b {
+  left: 49.87%;
+  top: 81.28%;
+  transform: translate(-50%, -50%);
+}
+
+.button-c {
+  left: 70.65%;
+  top: 76.96%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 768px) {
+  body {
+    background-image: url("../images/site-bg-mobile.png");
+    background-attachment: scroll;
+  }
+
+  .site-wrap {
+    padding: 18px 12px 28px;
+  }
+
+  .site-logo {
+    width: min(92vw, 520px);
+  }
+
+  .game-page {
+  align-items: center;
+}
+
+  .device {
+    width: min(86vw, 430px);
+  }
+
+ 
+  .screen-placeholder {
+    background-image: url("../images/site-bg-mobile.png");
+    padding: 12px;
+  }
+
+  .screen-label {
+    font-size: 0.8rem;
+  }
+
+  .screen-sub {
+    font-size: 0.68rem;
+  }
+
+  .device-button {
+    width: 13.5%;
+  }
+}
+
+/* =========================
+   LOADING SCREEN
+========================= */
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+
+  background-image: url("../images/site-bg-desktop.png");
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  z-index: 9999;
+  transition: opacity 0.6s ease;
+}
+
+/* 로딩 화면 전용 타이틀 */
+.loading-logo {
+  display: block;
+  width: min(62vw, 730px);
+  height: auto;
+  image-rendering: pixelated;
+}
+
+/* 로딩 바 전체 영역 */
+.loading-bar {
+  width: min(56vw, 650px);
+  height: 9px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* 흰색 로딩 바 */
+.loading-progress {
+  width: 0%;
+  height: 100%;
+  background-color: white;
+  border-radius: 20px;
+  animation: loadingFill 3s linear forwards;
+}
+
+/* 로딩 바 채워지는 애니메이션 */
+@keyframes loadingFill {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+/* 로딩 완료 후 사라지는 효과 */
+.loading-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .loading-screen {
+    background-image: url("../images/site-bg-mobile.png");
+  }
+
+  .loading-logo {
+    width: 80vw;
+  }
+
+  .loading-bar {
+    width: 74vw;
+    height: 7px;
+  }
+}
+
+/* =========================
+   WELCOME & NAME SCREEN
+========================= */
+
+.welcome-screen,
+.name-screen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff7fb;
+  color: #ed8ab8;
+  text-align: center;
+}
+
+
+/* =========================
+   WELCOME IMAGE ANIMATION
+========================= */
+
+/* 환영 화면 */
+.welcome-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+}
+
+/* 두 이미지의 전체 배치 */
+.welcome-sequence {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+
+/* WELCOME 이미지의 표시 크기 */
+.welcome-type-wrap {
+  width: 76%;
+}
+
+/* 이미지가 한 글자씩 나타나는 영역 */
+.welcome-type-mask {
+  width: 100%;
+  overflow: hidden;
+  clip-path: inset(0 100% 0 0);
+}
+
+/* WELCOME PNG */
+.welcome-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 타이핑 애니메이션 */
+
+.welcome-type-mask.is-typing {
+  animation: revealWelcome 1.6s steps(8, end) forwards;
+}
+
+@keyframes revealWelcome {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* 두 번째 문구 */
+.wish-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 66%;
+}
+
+/* 두 번째 PNG */
+.wish-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* hidden이 적용되면 완전히 숨기기 */
+.wish-message[hidden],
+.welcome-screen[hidden],
+.name-screen[hidden] {
+  display: none;
+}
+
+
+/* 이름 짓기 화면 */
+.name-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 16px;
+}
+
+.name-screen[hidden],
+.welcome-screen[hidden] {
+  display: none;
+}
+
+.name-title {
+  width: 84%;
+  min-height: 96px;
+  padding: 16px 10px;
+  border: 3px solid #f3a0c7;
+  border-radius: 18px;
+  background-color: #fff4fa;
+  font-family: "WichuPixel", sans-serif;
+  font-size: clamp(22px, 2.8vw, 34px);
+  font-weight: normal;
+  line-height: 1.55;
+  color: #f29ac0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#wichuName {
+  width: 84%;
+  min-width: 0;
+  height: 52px;
+  padding: 10px 12px;
+  background: #e8a6c7;
+  border: 3px solid #f3a0c7;
+  border-radius: 10px;
+  outline-color: #ed8ab8;
+  color: #fffafc;
+  font-family: "WichuPixel", sans-serif;
+  font-size: clamp(18px, 2vw, 26px);
+  text-align: center;
+}
+
+#wichuName::placeholder {
+  color: rgba(255, 250, 252, 0.78);
+  font-family: "WichuPixel", sans-serif;
+  font-size: clamp(16px, 1.8vw, 22px);
+}
+
+#startButton {
+  width: 58%;
+  height: 40px;
+  padding: 0;
+  background-color: #fff4fa;
+  border: 3px solid #f3a0c7;
+  border-radius: 12px;
+  color: #f29ac0;
+  font-family: "WichuPixel", sans-serif;
+  font-size: clamp(16px, 1.7vw, 22px);
+  cursor: pointer;
+}
+
+#startButton:hover {
+  background-color: #ffe2ef;
+}
+
+
+/* 이름 짓기 화면 전용 폰트 */
+
+@font-face {
+  font-family: "WichuPixel";
+  src: url("../fonts/fs-pixel-sans-unicode-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 이름 짓기 화면에 폰트 적용 */
+.name-title,
+#wichuName,
+#startButton {
+  font-family: "WichuPixel", sans-serif;
+}
+
+
+/* 이름 짓기 화면 - 하트 패턴 배경 */
+.name-screen {
+  background-color: #fff7fb;
+  background-image: url("../images/screen-heart-bg.png");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 이름 짓기 화면 전환 효과 */
+.name-screen {
+  transition: opacity 0.35s ease;
+}
+
+.name-screen.is-entering {
+  opacity: 0;
+}
+
+.name-screen.is-visible {
+  opacity: 1;
+}
+
+
+/* WELCOME → 이름 짓기 화면 전환 */
+
+.name-screen {
+  z-index: 2;
+  transition: opacity 0.4s ease;
+}
+
+.name-screen.is-entering {
+  opacity: 0;
+}
+
+.name-screen.is-visible {
+  opacity: 1;
+}
+
+
+/* 한글 픽셀 폰트 연결 */
+@font-face {
+  font-family: "WichuKorean";
+  src: url("../fonts/Galmuri9.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 이름 입력창: 영어 + 한글 */
+#wichuName {
+  font-family: "WichuPixel", "WichuKorean", sans-serif;
+}
+

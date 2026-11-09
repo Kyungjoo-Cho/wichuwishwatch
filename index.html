@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WICHU WISH WATCH</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+  /* 로딩 중에는 게임 화면 숨기기 */
+  .site-wrap {
+    visibility: hidden;
+  }
+
+  /* 로딩 화면 기본 표시 */
+  #loadingScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+  }
+</style>
+</head>
+<body>
+	<!-- 첫 번째 로딩 화면 -->
+<div class="loading-screen" id="loadingScreen">
+
+  <img
+    src="assets/images/logo-title.png"
+    alt="WICHU WISH WATCH"
+    class="loading-logo"
+  >
+
+  <div class="loading-bar">
+    <div class="loading-progress"></div>
+  		</div>
+	</div>
+
+	<!--다마고치 화면 -->
+  <div class="site-wrap">
+
+
+    <main class="game-page">
+      <section class="device-area">
+
+        <div class="device" id="device">
+          <img
+            src="assets/images/device-shell.png"
+            alt="WICHU WISH WATCH device"
+            class="device-shell"
+          >
+
+ 
+<div class="screen-area" id="screenArea">
+
+  <!-- WELCOME 화면 -->
+  <div class="welcome-screen" id="welcomeScreen">
+
+    <div class="welcome-sequence">
+
+      <!-- 타이핑 효과: WELCOME! -->
+      <div class="welcome-type-wrap">
+        <div class="welcome-type-mask" id="welcomeTypeMask">
+          <img
+            src="assets/images/text-welcome.png"
+            alt="Welcome!"
+            class="welcome-image"
+          >
+        </div>
+      </div>
+
+      <!-- 한 번에 등장: BE MY WISH -->
+      <div class="wish-message" id="wishMessage" hidden>
+        <img
+          src="assets/images/text-be-my-wish.png"
+          alt="BE MY WISH and MAKE a WISH"
+          class="wish-image"
+        >
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 위츄 이름 짓기 화면 -->
+  <div class="name-screen" id="nameScreen" hidden>
+
+    <div class="name-title">
+      Name your<br>WICHU!
+    </div>
+
+    <input
+      type="text"
+      id="wichuName"
+      placeholder="WICHU NAME"
+      aria-label="위츄 이름"
+      autocomplete="off"
+    >
+
+    <button type="button" id="startButton">
+      START
+    </button>
+
+  </div>
+
+</div>
+
+
+
+          <!-- 버튼 클릭 영역 -->
+          <button class="device-button button-a" id="buttonA" aria-label="왼쪽 버튼 A"></button>
+          <button class="device-button button-b" id="buttonB" aria-label="가운데 버튼 B"></button>
+          <button class="device-button button-c" id="buttonC" aria-label="오른쪽 버튼 C"></button>
+        </div>
+
+      </section>
+    </main>
+
+  </div>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>
